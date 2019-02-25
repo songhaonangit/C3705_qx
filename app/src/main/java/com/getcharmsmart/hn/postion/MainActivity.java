@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     Loding58View  loding58View;
     TextView result,tv;
-    List<String> list = new ArrayList<>();
     StringBuilder stringBuilder;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -63,13 +62,15 @@ public class MainActivity extends AppCompatActivity {
         tv.setVisibility(View.INVISIBLE);
         loding58View.setVisibility(View.INVISIBLE);
       //  tv.setMovementMethod(ScrollingMovementMethod.getInstance());
-     open();
+
+        open();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                ioctl(3,1);
-                //开始获取MEMA数据
+
+                //通过JNI 开始获取MEMA数据
                 ioctl(2,1);
 
                 unLock();
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         /**
-         * 设置为横屏
+         * 设置为竖屏
          */
         if(getRequestedOrientation()!= ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -91,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
+        /**
+         *检查网络状态
+         */
 
         if (!NetWorkUtils.isNetworkAvailable(this)) {
             showSetNetworkUI(this);
@@ -105,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        //检查权限
         verifyStoragePermissions(this);
     }
 
@@ -177,13 +182,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onFinish() {
 
-
-//                list = FileUtils.readFileToList(FILE_NAME,"UTF_8");
-//
-//                Log.d("TAG",list.size()+"");
-//                if(list.size()!= 0){
-//                    result.setText(list.get(0).toString()+list.get(1).toString());
-//                }
 
             File file = new File(FILE_NAME);
             if (file == null || !file.isFile()) {
