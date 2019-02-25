@@ -1,17 +1,6 @@
-[![Android Gems](http://www.android-gems.com/badge/guohuanwen/TaiJIView.svg?branch=master)](http://www.android-gems.com/lib/guohuanwen/TaiJIView)
 
-# AndroidLoadingAnimation
-#Demo  
-
-![](https://github.com/guohuanwen/AndroidLoadingAnimation/blob/master/screenshots/taiji1.gif)  
-
-
-  
-#Usage  
-cope mylibrary to your project  
-  
 #License
-    Copyright 2015 guohuanwen
+    Copyright 2015 
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -27,3 +16,4 @@ cope mylibrary to your project
 
 
 # C3705_qx
+千寻高精度打卡终端
